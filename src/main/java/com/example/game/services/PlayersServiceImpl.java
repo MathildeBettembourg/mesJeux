@@ -23,52 +23,55 @@ import java.util.List;
 @Service
 public class PlayersServiceImpl implements PlayersService {
     private final PlayersRepository playersRepository;
-    private final GameRepository gameRepository;
-    private final BoardGameRepository boardGameRepository;
+
+
     private static final Logger logger = LoggerFactory.getLogger(PlayersServiceImpl.class);
 
     public PlayersServiceImpl(PlayersRepository playersRepository, GameRepository gameRepository, BoardGameRepository boardGameRepository) {
         this.playersRepository = playersRepository;
-        this.gameRepository = gameRepository;
-        this.boardGameRepository = boardGameRepository;
     }
 
-    public Players addWinningEvent(Long playerId, Long gameId) {
-        Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
-        Game game = gameRepository.findById(gameId).orElseThrow(() -> new EntityNotFoundException("error not found"));
-        player.getGameWon().add(game);
-        if(player.getNumberOfGameWon()==null){
-            player.setNumberOfGameWon(1);
-        }else {
-            player.setNumberOfGameWon(player.getNumberOfGameWon() + 1);
-        }
-        game.setWinner(player);
-        gameRepository.save(game);
-        return playersRepository.save(player);
+    public List<Players> findAllById(Iterable<Long> longs) {
+        return playersRepository.findAllById(longs);
     }
-//id
-    public Players addGameToPlayer(Long playerId, Long gameId) {
-        Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
-        Game games = gameRepository.findById(gameId).orElseThrow(() -> new EntityNotFoundException("not found"));
-        player.getGames().add(games);
-        if(player.getNumberOfGamePlayed()==null){
-            player.setNumberOfGamePlayed(1);
-        }else{
-            player.setNumberOfGamePlayed(player.getNumberOfGamePlayed()+1);
-        }
-        player.setNumberOfGamePlayed(player.getNumberOfGamePlayed() + 1);
-        return playersRepository.save(player);
 
-    }
-//id
-    public Players addBoardGameToPlayer(Long playerId, Long boardGameId) {
-        Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
-        BoardGame boardGames = boardGameRepository.findById(boardGameId).orElseThrow(() -> new EntityNotFoundException("P")) ;
-        player.getListBoardGame().add(boardGames);
-        boardGames.getPlayersList().add(player);
-        this.boardGameRepository.save(boardGames);
-        return playersRepository.save(player);
-    }
+    //
+//    public Players addWinningEvent(Long playerId, Long gameId) {
+//        Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
+//        Game game = gameRepository.findById(gameId).orElseThrow(() -> new EntityNotFoundException("error not found"));
+//        player.getGameWon().add(game);
+//        if(player.getNumberOfGameWon()==null){
+//            player.setNumberOfGameWon(1);
+//        }else {
+//            player.setNumberOfGameWon(player.getNumberOfGameWon() + 1);
+//        }
+//        game.setWinner(player);
+//        gameRepository.save(game);
+//        return playersRepository.save(player);
+//    }
+////id
+//    public Players addGameToPlayer(Long playerId, Long gameId) {
+//        Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
+//        Game games = gameRepository.findById(gameId).orElseThrow(() -> new EntityNotFoundException("not found"));
+//        player.getGames().add(games);
+//        if(player.getNumberOfGamePlayed()==null){
+//            player.setNumberOfGamePlayed(1);
+//        }else{
+//            player.setNumberOfGamePlayed(player.getNumberOfGamePlayed()+1);
+//        }
+//        player.setNumberOfGamePlayed(player.getNumberOfGamePlayed() + 1);
+//        return playersRepository.save(player);
+//
+//    }
+////id
+//    public Players addBoardGameToPlayer(Long playerId, Long boardGameId) {
+//        Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
+//        BoardGame boardGames = boardGameRepository.findById(boardGameId).orElseThrow(() -> new EntityNotFoundException("P")) ;
+//        player.getListBoardGame().add(boardGames);
+//        boardGames.getPlayersList().add(player);
+//        this.boardGameRepository.save(boardGames);
+//        return playersRepository.save(player);
+//    }
 public List<GameDTOOut> getListGamePlayed(Long playerId){
     List<GameDTOOut> listToSend =new ArrayList<>();
     Players player = playersRepository.findById(playerId).orElseThrow(() -> new EntityNotFoundException("Player not found with id: " + playerId));
@@ -150,14 +153,14 @@ public List<GameDTOOut> getListGamePlayed(Long playerId){
     }
 
     @Override
-    public Players findPlayersByFirstName(String firstName) {
+    public List<Players> findPlayersByFirstName(String firstName) {
         return playersRepository.findPlayersByFirstName(firstName);
     }
 
     ;
 
     @Override
-    public Players findPlayersByLastName(String lastName) {
+    public List<Players> findPlayersByLastName(String lastName) {
         return playersRepository.findPlayersByLastName(lastName);
     }
 

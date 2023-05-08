@@ -3,7 +3,9 @@ package com.example.game.repositories;
 import com.example.game.entities.Players;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface PlayersRepository  extends JpaRepository<Players,Long> {
-    Players findPlayersByFirstName(String firstName);
-    Players findPlayersByLastName(String lastName);
+    List<Players> findPlayersByFirstName(String firstName);
+    List<Players> findPlayersByLastName(String lastName);
 }

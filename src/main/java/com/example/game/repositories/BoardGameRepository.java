@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BoardGameRepository extends JpaRepository<BoardGame, Long> {
-    List<BoardGame> findByNbOfPlayersMinIsLessThanEqual(Integer nbOfPlayersMin);
-    List<BoardGame> findByNbOfPlayersMaxIsLessThanEqual(Integer nbOfPlayersMax);
+    List<BoardGame> findByNbOfPlayersMinIsLessThanEqual (Integer nbOfPlayersMin);
+    List<BoardGame> findByNbOfPlayersMaxIsGreaterThanEqual(Integer nbOfPlayersMax);
 
     List<BoardGame> findByTime(Integer time);
     List<BoardGame> findByExperience(MyEnum.Experience experience);

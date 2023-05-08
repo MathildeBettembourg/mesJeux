@@ -64,10 +64,7 @@ public class BoardGameServiceImpl implements BoardGameService {
         return boardGameRepository.save(entity);
     }
 
-    @Override
-    public void addPlayerToGame(Long playerId, Long gameId) {
 
-    }
     @Override
     public BoardGame findById(Long id) {
         BoardGame boardGame  = boardGameRepository.findById(id).orElseThrow(() -> {
@@ -121,7 +118,7 @@ public class BoardGameServiceImpl implements BoardGameService {
 
     @Override
     public List<BoardGameDTOOut> findByNumberOfPlayersMax(Integer numberOfPlayerMax){
-        List<BoardGame> listOut = boardGameRepository.findByNbOfPlayersMaxIsLessThanEqual(numberOfPlayerMax);
+        List<BoardGame> listOut = boardGameRepository.findByNbOfPlayersMaxIsGreaterThanEqual(numberOfPlayerMax);
         List<BoardGameDTOOut> listForView = new ArrayList<>();
         if(listOut.size()!=0){
             for(int i =0; i< listOut.size();i++) {
@@ -138,7 +135,7 @@ public class BoardGameServiceImpl implements BoardGameService {
     public List<BoardGameDTOOut> findByTime(Integer time){
         List<BoardGame> listOut = boardGameRepository.findByTime(time);
         List<BoardGameDTOOut> listForView = new ArrayList<>();
-        for(int i =0; i<= listOut.size();i++){
+        for(int i =0; i< listOut.size();i++){
             BoardGameDTOOut boardGameDTOOut = new BoardGameDTOOut(listOut.get(i).getId(), listOut.get(i).getName());
             listForView.add(boardGameDTOOut);
         }

@@ -69,7 +69,7 @@ public interface PlayersService {
      * @param firstName as a string
      * @return the targeted player
      */
-    Players findPlayersByFirstName(String firstName);
+    List<Players> findPlayersByFirstName(String firstName);
 
     /**
      * findPlayerByLastName to find a player easily by its lastname
@@ -77,17 +77,17 @@ public interface PlayersService {
      * @param lastName string
      * @return the targetedplayer
      */
-    Players findPlayersByLastName(String lastName);
+    List<Players> findPlayersByLastName(String lastName);
 
     List<BoardGameDTOOut> findAllGameOfOnePlayer(Long id);
 
     Players update(Players players);
 
-    Players addGameToPlayer(Long playerId, Long gameId);
-
-    Players addBoardGameToPlayer(Long playerId, Long boardGameId);
-
-    Players addWinningEvent(Long playerId, Long gameId);
+//    Players addGameToPlayer(Long playerId, Long gameId);
+//
+//    Players addBoardGameToPlayer(Long playerId, Long boardGameId);
+//
+//    Players addWinningEvent(Long playerId, Long gameId);
     List<GameDTOOut>findAllGameWon(Long id);
     List<GameDTOOut> getListGamePlayed(Long playerId);
 }

@@ -20,7 +20,7 @@ public class BoardGameController {
 
     /**
      * findAll() is a function to find all the boardgames of the database
-     * @return a list of boardgames
+     * @return a list of boardgames -*
      */
     @GetMapping("")
     public List<BoardGameDTOOut> findAll() {
@@ -49,7 +49,7 @@ public class BoardGameController {
      * this function is to save a new game in database
      *
      * @param entity a game as Boardgame object
-     * @return the entity saved
+     * @return the entity saved+
      */
     @PostMapping("")
     public BoardGame save(@RequestBody BoardGame entity) {
@@ -57,7 +57,7 @@ public class BoardGameController {
     }
 
     /**
-     * This function is made to find a game by its id
+     * This function is made to find a game by its id+
      *
      * @param id long
      * @return an object corresponding to the targetted one
@@ -71,7 +71,7 @@ public class BoardGameController {
     /**
      * Common util function to delete a boardgame within database following its id
      *
-     * @param id long from the boardgame
+     * @param id long from the boardgame+
      */
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
@@ -81,7 +81,7 @@ public class BoardGameController {
     /**
      * find by number of players min to find the right game according the number of players
      *
-     * @param numberOfPlayerMin as an interger
+     * @param numberOfPlayerMin as an interger+
      * @return a list og boardgames
      */
     @GetMapping("/numberOfPlayersMin/{numberOfPlayerMin}")
@@ -92,7 +92,7 @@ public class BoardGameController {
     /**
      * find by number of players min to find the right game according the number of players
      *
-     * @param numberOfPlayerMax as an interger
+     * @param numberOfPlayerMax as an interger+
      * @return a list og boardgames
      */
     @GetMapping("/numberOfPlayersMax/{numberOfPlayerMax}")
@@ -103,7 +103,7 @@ public class BoardGameController {
     /**
      * find by time is to find the right
      *
-     * @param time that games have to playahead
+     * @param time that games have to played+
      * @return a list of boardgame
      */
     @GetMapping("/time/{time}")

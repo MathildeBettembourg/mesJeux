@@ -43,7 +43,6 @@ public class Game {
     //un jeu par partie Many to One -4
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "board_game_id")
     private BoardGame boardGamePlayed;
 

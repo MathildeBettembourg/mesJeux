@@ -13,7 +13,7 @@ public interface BoardGameService {
      * @return a list of boardgame
      */
     List<BoardGameDTOOut> findAll();
-    public void addPlayerToGame(Long playerId, Long gameId);
+
     /**
      * findAllById to find a list of borad game by their ids
      *

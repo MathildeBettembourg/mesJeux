@@ -13,7 +13,9 @@ public interface GameService {
      * @param playersId the id of the player
      * @return the game edited
      */
-    Game addPlayerToGame(Long gameId, List<Integer> playersId);
+    Game addPlayerToGame(Long gameId,Iterable<Long> playersId);
+
+    Game addBoardGameToTheGame(Long gameId, Long boardgameId);
 
     /**
      * FindAll is the function to find all the game in database
