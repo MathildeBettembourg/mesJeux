@@ -32,7 +32,7 @@ public class Game {
 
 
     /**
-     * todo check service
+     *
      * Liste de joueurs gagnants de la partie many  to one- 3 Write ok
      */
     //gagnant Many to one gagnant -3
@@ -47,22 +47,6 @@ public class Game {
     private BoardGame boardGamePlayed;
 
 
-//    /**
-//     * Plusieurs partie (game) pour un jeux (boardgame)
-//     */
-//    @ManyToOne
-//    @JoinColumn(name = "board_game_id")
-//    private BoardGame boardGame;
-//    @ManyToMany
-//    @JoinTable(name = "game_PlayersOfThatGame",
-//            joinColumns =
-//            @JoinColumn(name = "playersOfThatGame"),
-//            inverseJoinColumns =
-//            @JoinColumn(name = "listOfGamePlayed"))
-
-
-@JsonIgnore
     @ManyToMany( mappedBy ="games")
             private List<Players>playersOfThatGame=new ArrayList<Players>();
 }
-//3 verifiee ok
