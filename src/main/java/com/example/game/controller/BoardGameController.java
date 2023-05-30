@@ -20,36 +20,17 @@ public class BoardGameController {
 
     /**
      * findAll() is a function to find all the boardgames of the database
-     * @return a list of boardgames -*
+     * @return a list of boardgames
      */
     @GetMapping("")
     public List<BoardGameDTOOut> findAll() {
         return boardGameService.findAll();
     }
 
-//    /**
-//     * to add a player to a boardgame file
-//     * @param boardgameId long
-//     * @param playerId long
-//     * @return the boardgame edited
-//     */
-//    @PostMapping("/boardgames/{boardgameId}/players/{playerId}")
-//    public BoardGame addPlayerThatPlayerToThatBoardGame (@PathVariable Long boardgameId, @PathVariable Long playerId) {
-//        return this.boardGameService.addPlayerThatPlayerToThatBoardGame(playerId, boardgameId);
-//    }
-
-//    //**many to one game and board game
-//    @PostMapping("/boardgames/{boardGameId}/games/{gameId}")
-//    public BoardGame addGameIdToBoardGameHistoric(@PathVariable Long boardGameId, @PathVariable Long gameId) {
-//        return this.boardGameService.addGameIdToBoardGameHistoric(gameId, boardGameId);
-//    }
-
-
     /**
      * this function is to save a new game in database
-     *
-     * @param entity a game as Boardgame object
-     * @return the entity saved+
+     * @param entity a game as Boardgames object
+     * @return the entity saved
      */
     @PostMapping("")
     public BoardGame save(@RequestBody BoardGame entity) {

@@ -91,7 +91,7 @@ public class BoardGameServiceImpl implements BoardGameService {
     @Override
     public BoardGame update(BoardGame boardGame){
         if (!this.boardGameRepository.existsById(boardGame.getId())){
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "introuvable");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "introuvable");
         }
         return this.boardGameRepository.save(boardGame);
     }
